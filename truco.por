@@ -34,32 +34,14 @@ programa {
     limpa()
     escreva("O jogo começará depois que a separação de cartas estiver pronta")
   }
-  funcao sorteiocartas(){
-  	cadeia naipes[4] = {"Espadas", "Paus", "Copas", "Ouros"}//Naipes
-=======
-    sorteiocartas()
-
-  }
-  funcao sorteiocartas(){
-  cadeia naipes[4] = {"Espadas", "Paus", "Copas", "Ouros"}//Naipes
->>>>>>> 30523f5a42290f6a290f57b49cc7b295f914f056
-        cadeia valores[13] = {"Ás", "Dois", "Três", "Quatro", "Cinco", "Seis", "Sete", "Oito", "Nove", "Dez", "Valete", "Dama", "Rei"}//Valores de cartas
-
-        inteiro sorteios= 6
-
-<<<<<<< HEAD
-        para (inteiro i = 1; i <= sorteios; i++){
-            inteiro indice_naipe = u.sorteia(0, 3)//Sorteio de naipe
-            inteiro indice_valor = u.sorteia(0, 12)//Sorteio de carta
-       }
-  }
-
-=======
-        para (inteiro i = 1; i <= sorteios; i++)
-        {
-            inteiro indice_naipe = u.sorteia(0, 3)//Sorteio de naipe
-            inteiro indice_valor = u.sorteia(0, 12)//Sorteio de carta
-        }
->>>>>>> 30523f5a42290f6a290f57b49cc7b295f914f056
-}
-}
+ 
+// funcao sorteiocartas(){
+//    cadeia naipes[4] = {"Espadas", "Paus", "Copas", "Ouros"}//Naipes
+//    cadeia valores[13] = {"Ás", "Dois", "Três", "Quatro", "Cinco", "Seis", "Sete", "Oito", "Nove", "Dez", "Valete", "Dama", "Rei"}//Valores de cartas
+//    inteiro sorteios= 6
+//
+//        para (inteiro i = 1; i <= sorteios; i++){
+//            inteiro indice_naipe = u.sorteia(0, 3)//Sorteio de naipe
+//            inteiro indice_valor = u.sorteia(0, 12)//Sorteio de carta
+//       }
+//  
