@@ -1,9 +1,14 @@
 programa {
+<<<<<<< HEAD
      inclua biblioteca Util --> u 
+=======
+    inclua biblioteca Util --> u 
+>>>>>>> 19c166146a4eafac91e22c84097ad99f6f4cab05
     cadeia baralho[40]
     cadeia baralho2[40]
     inteiro cartaSorteada
     logico embaralhar
+<<<<<<< HEAD
     inteiro selecao
     cadeia jogarcarta
     logico vez
@@ -47,11 +52,9 @@ programa {
     baralho[36] = "4 de Paus ♣" 
     baralho[37] = "4 de Espada ♠" 
     baralho[38] = "4 de Ouro ♦" 
-    baralho[39] = "4 de Copa ♥"  
-
-   
-   
+    baralho[39] = "4 de Copa ♥"   
     logico iniciar
+    
     escreva(" _______________________________________________________________________________________________ \n")
     escreva("|###############################################################################################|\n")
     escreva("|###############################################################################################|\n")
@@ -67,7 +70,11 @@ programa {
     escreva(" ___________________________________Jogo de truco gaudério______________________________________ \n")
     escreva(" _______________________Produzido por Eduardo Franzosi & Eduardo Rossatto_______________________ \n")
     escreva(" ___________________________________Deseja iniciar o jogo?______________________________________ \n")
+<<<<<<< HEAD
     escreva(" ______________________________________1 - Sim / 0 - Não________________________________________ \n")
+=======
+    escreva(" ______________________________________1 - Sim / 0 - Não__________________________________________ \n")
+>>>>>>> 19c166146a4eafac91e22c84097ad99f6f4cab05
     escreva(" _______________________________________________________________________________________________ \n")
     escreva("----------------> ")
     leia(iniciar)
@@ -85,10 +92,31 @@ programa {
     leia(embaralhar)
     se(embaralhar){
       
+<<<<<<< HEAD
       jogo()
+=======
+      embaralharcartas()
+>>>>>>> 19c166146a4eafac91e22c84097ad99f6f4cab05
     }senao{
      inicio()
     }
     
   }
+  funcao jogador1(){
+    limpa()
+ 
+  }
+  funcao embaralharcartas(){
+    
+      para(inteiro i = 0;i<3;i++){
+        cartaSorteada=u.sorteia(0, 39)
+        escreva(baralho[cartaSorteada])
+       }
+       para(inteiro i = 0;i<3;i++){
+        cartaSorteada=u.sorteia(0, 39)
+        escreva(baralho2[cartaSorteada], " ")
+
+     }
+  }    
+
 }
