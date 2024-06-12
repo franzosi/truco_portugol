@@ -11,9 +11,15 @@ programa {
   inteiro pontuacao_mao1 = 0, pontuacao_mao2 = 0, pontuacao_rodada1 = 0, pontuacao_rodada2 = 0
   cadeia carta_jogador1[3]
   cadeia carta_jogador2[3]
+  cadeia player1Name
+  cadeia player2Name
   inteiro carta_jogada1
   inteiro carta_jogada2
-  logico auxiliar
+  logico auxiliar = falso
+  cadeia loop
+  inteiro valorjogada1 = 1
+  inteiro valorjogada2 = 0
+  logico menu
  // logico auxiliar2
 
   funcao inicio() {
@@ -21,7 +27,7 @@ programa {
   }
 
   funcao menu_inicial(){
-       escreva(" _______________________________________________________________________________________________ \n")
+   escreva(" _______________________________________________________________________________________________ \n")
     escreva("|###############################################################################################|\n")
     escreva("|###############################################################################################|\n")
     escreva("|############____   ____|####   ____|########  |#####  |###   _______|####   _______  |#########|\n")
@@ -42,56 +48,110 @@ programa {
     leia(opc_menu)
     escolha(opc_menu){
       caso 1:
+      escreva("Escreva o nome do jogador 1:\n")
+      leia(player1Name)
+      escreva("Escreva o nome do jogador 2:\n")
+      leia(player2Name)
         menu_jogo()
+
         pare
 
       caso 2:
         escreva("Obrigado por jogar nosso jogo!")
         pare
       caso contrario:
-        escreva("Opção Inválida, tente novamente")
+      limpa()
+        escreva("Opção Inválida, tente novamente\n")
+    menu_inicial()
         pare
       
     }
+ 
   }
 
-  funcao menu_jogo(){
-    para(numero_mao = 0; numero_mao < 12; numero_mao++){
-      mao_cartas()
-      para(numero_rodadas = 0; numero_rodadas < 3; numero_rodadas++){
-        carta_jogada1 = 0
+  funcao jogo1(){
+    carta_jogada1 = 0
         limpa()
-        escreva("Pontuação da Rodada - Jogador ", 1, ": ", pontuacao_rodada1,"\n")
-        escreva("Pontuação da Rodada - Jogador ", 2, ": ", pontuacao_rodada2,"\n")
-        escreva("Pontuação da Mão - Jogador ", 1, ": ", pontuacao_mao1,"\n")
-        escreva("Pontuação da Mão - Jogador ", 2, ": ", pontuacao_mao2,"\n")
+        escreva("Pontuação da Rodada - Jogador ", player1Name, ": ", pontuacao_rodada1,"\n")
+        escreva("Pontuação da Rodada - Jogador ", player2Name, ": ", pontuacao_rodada2,"\n")
+        escreva("_____________________________________\n")
+        escreva("_____________________________________\n")
+        escreva("Pontuação da Mão - Jogador ", player1Name, ": ", pontuacao_mao1,"\n")
+        escreva("Pontuação da Mão - Jogador ", player2Name, ": ", pontuacao_mao2,"\n")
         auxiliar = falso
         enquanto(auxiliar == falso){
+        se(loop == "Player1"){
+          escreva(carta_jogador2[carta_jogada2 - 1], " Na mesa\n")
+          carta_jogador2[carta_jogada2-1] = "Na mesa"
+        }
+         
+          //mesa()
           cartasJogadorUm()
           jogarCartasUm()
+         // carta_jogador2[carta_jogada2-1] = "Na mesa"
         }
+  }
 
+  funcao jogo2(){
         carta_jogada2 = 0
-        escreva("Pontuação da Rodada - Jogador ", 1, ": ", pontuacao_rodada1,"\n")
-        escreva("Pontuação da Rodada - Jogador ", 2, ": ", pontuacao_rodada2,"\n")
-        escreva("Pontuação da Mão - Jogador ", 1, ": ", pontuacao_mao1,"\n")
-        escreva("Pontuação da Mão - Jogador ", 2, ": ", pontuacao_mao2,"\n")
+        escreva("Pontuação da Rodada - Jogador ", player1Name, ":" , pontuacao_rodada1,"\n")
+        escreva("Pontuação da Rodada - Jogador ", player2Name, ": ", pontuacao_rodada2,"\n")
+        escreva("_____________________________________\n")
+        escreva("_____________________________________\n")
+        escreva("Pontuação da Mão - Jogador ", player1Name, ": ", pontuacao_mao1,"\n")
+        escreva("Pontuação da Mão - Jogador ", player2Name, ": ", pontuacao_mao2,"\n")
         auxiliar = falso
         
         faca{
+        se(loop == "Player2"){
+        escreva(carta_jogador1[carta_jogada1 - 1], " Na mesa\n")
+        carta_jogador1[carta_jogada1-1] = "Na mesa"
+        }
+        
+          //mesa()
           cartasJogadorDois()
           jogarCartasDois()
+          //carta_jogador1[carta_jogada1-1] = "Na mesa"
+
+           
         }enquanto(auxiliar == falso)
+  }
+
+  funcao menu_jogo(){
+    limpa()
+    para(numero_mao = 0; numero_mao < 12; numero_mao++){
+      mao_cartas()
+      se(valorjogada1>valorjogada2){
+    para(numero_rodadas = 0; numero_rodadas < 3; numero_rodadas++){
+      limpa()
+        loop = "Player2"
+        jogo1()
+        limpa()
+        jogo2()
        
         verVencedorRodada()
+      }
+      }senao{
+          para(numero_rodadas = 0; numero_rodadas < 3; numero_rodadas++){
+          limpa()
+          loop = "Player1"
+          jogo2()
+          limpa()
+          jogo1()
+       
+          verVencedorRodada()
+      }
       }
       verVencedorMao()
     }
   }
-
   funcao jogarCartasUm(){
     escreva("Qual carta deseja jogar?\n")
     leia(carta_jogada1)
+    se(carta_jogada1 > 3 ou carta_jogada1 < 1){
+      auxiliar = falso
+      escreva("Valor inválido, tente novamente com valores de 1 a 3 \n")
+    }senao{ 
     para(inteiro i = 0;i<3;i++){
     se(carta_jogador1[carta_jogada1-1] == "Na mesa"){
     auxiliar = falso
@@ -100,16 +160,29 @@ programa {
     }senao{
       auxiliar=verdadeiro
       escreva(carta_jogador1[carta_jogada1 - 1], " Na mesa\n") 
-      pare
+    pare
     }
     }
-    carta_jogador1[carta_jogada1-1] = "Na mesa"
+     se(loop == "Player2"){
+        escreva(carta_jogador1[carta_jogada1 - 1], " Na mesa\n")
+        //carta_jogador1[carta_jogada1-1] = "Na mesa"
+       }senao{
+        carta_jogador1[carta_jogada1-1] = "Na mesa"
+       }
+         
+    }
+    
 
   }
 
   funcao jogarCartasDois(){
+    
     escreva("Qual carta deseja jogar?\n")
         leia(carta_jogada2)
+    se(carta_jogada2 > 3 ou carta_jogada2 < 1){
+      auxiliar = falso
+      escreva("Valor inválido, tente novamente com valores de 1 a 3\n")
+    }senao{
     para(inteiro i = 0;i<3;i++){
     se(carta_jogador2[carta_jogada2-1] == "Na mesa"){
       auxiliar = falso
@@ -122,7 +195,13 @@ programa {
       
      }
     }
-    carta_jogador2[carta_jogada2-1] = "Na mesa"
+   se(loop == "Player1"){
+          escreva(carta_jogador2[carta_jogada2 - 1], " Na mesa\n")
+        }senao{
+          carta_jogador2[carta_jogada2-1] = "Na mesa"
+        }
+    }
+    
   }
 
   funcao mao_cartas(){
@@ -153,14 +232,14 @@ programa {
     }
   }
     funcao cartasJogadorUm(){
-    escreva("Cartas Jogador 1: \n")
+    escreva(player1Name, "\n")
     para(inteiro i = 0; i < 3; i++){
       escreva(carta_jogador1[i],"\n")
     }
   }
 
   funcao cartasJogadorDois(){
-    escreva("Cartas Jogador 2: \n")
+    escreva(player2Name, "\n")
     para(inteiro i = 0; i < 3; i++){
       escreva(carta_jogador2[i],"\n")
     }
@@ -169,9 +248,11 @@ programa {
     se(numero_rodadas == 3){
       se(pontuacao_rodada1 > pontuacao_rodada2){
         pontuacao_mao1 ++
+        
       }
       senao se(pontuacao_rodada1 < pontuacao_rodada2){
         pontuacao_mao2 ++
+        
       }
       pontuacao_rodada1 = 0
       pontuacao_rodada2 = 0
@@ -183,10 +264,14 @@ programa {
     para(inteiro i = 0; i < 3; i++){
       se(pontuacao_cartas1[i] > pontuacao_cartas2[i]){
         pontuacao_rodada1 ++
+        valorjogada1 = 1
+        valorjogada2 = 0
         pare
       }
       senao se(pontuacao_cartas1[i] < pontuacao_cartas2[i]){
         pontuacao_rodada2 ++
+        valorjogada2 = 1
+        valorjogada1 = 0
         pare
       }
       senao se(pontuacao_cartas1[i] == pontuacao_cartas2[i]){
