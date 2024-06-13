@@ -214,21 +214,22 @@ programa {
       aux = u.sorteia(0,39)
       carta_jogador1[i] = cartas_sorteadas[aux]
       pontuacao_cartas1[i] = pontuacao_cartas[aux]
-      se(cartas[aux] == ""){
+      se(carta_jogador1[i] == cartas[aux]){
         aux = u.sorteia(0,39)
         carta_jogador1[i] = cartas[aux]
       }
-      cartas[aux] = ""
+      
+      //cartas[aux] = ""
     }
     para(inteiro i = 0; i < 3; i++){
       aux = u.sorteia(0,39)
       carta_jogador2[i] = cartas_sorteadas[aux]
       pontuacao_cartas2[i] = pontuacao_cartas[aux]
-      se(cartas[aux] == ""){
+      se(carta_jogador2[i] == cartas[aux]){
         aux = u.sorteia(0,39)
         carta_jogador2[i] = cartas[aux]
       }
-      cartas[aux] = ""
+      //cartas[aux] = ""
     }
   }
     funcao cartasJogadorUm(){
