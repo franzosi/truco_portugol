@@ -214,35 +214,39 @@ programa {
       aux = u.sorteia(0,39)
       carta_jogador1[i] = cartas_sorteadas[aux]
       pontuacao_cartas1[i] = pontuacao_cartas[aux]
+
       se(carta_jogador1[i] == cartas[aux]){
         aux = u.sorteia(0,39)
         carta_jogador1[i] = cartas[aux]
       }
       
-      //cartas[aux] = ""
+      
+
     }
     para(inteiro i = 0; i < 3; i++){
       aux = u.sorteia(0,39)
       carta_jogador2[i] = cartas_sorteadas[aux]
       pontuacao_cartas2[i] = pontuacao_cartas[aux]
+
       se(carta_jogador2[i] == cartas[aux]){
         aux = u.sorteia(0,39)
         carta_jogador2[i] = cartas[aux]
       }
-      //cartas[aux] = ""
+      
     }
   }
-    funcao cartasJogadorUm(){
+   funcao cartasJogadorUm(){
     escreva(player1Name, "\n")
     para(inteiro i = 0; i < 3; i++){
-      escreva(carta_jogador1[i],"\n")
+      escreva(i+1, "- ", carta_jogador1[i], "\n")
     }
-  }
+}
 
   funcao cartasJogadorDois(){
     escreva(player2Name, "\n")
     para(inteiro i = 0; i < 3; i++){
-      escreva(carta_jogador2[i],"\n")
+
+      escreva(i+1, "- ", carta_jogador2[i],"\n")
     }
   }
   funcao verVencedorMao(){
