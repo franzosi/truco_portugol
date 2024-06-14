@@ -215,7 +215,7 @@ programa {
       carta_jogador1[i] = cartas_sorteadas[aux]
       pontuacao_cartas1[i] = pontuacao_cartas[aux]
 
-      se(carta_jogador1[i] == cartas[aux]){
+      se(carta_jogador1[i] == cartas[aux] ou carta_jogador1[i] == carta_jogador2[i]){
         aux = u.sorteia(0,39)
         carta_jogador1[i] = cartas[aux]
       }
@@ -228,7 +228,7 @@ programa {
       carta_jogador2[i] = cartas_sorteadas[aux]
       pontuacao_cartas2[i] = pontuacao_cartas[aux]
 
-      se(carta_jogador2[i] == cartas[aux]){
+      se(carta_jogador2[i] == cartas[aux] ou carta_jogador2[i] == carta_jogador1[i]){
         aux = u.sorteia(0,39)
         carta_jogador2[i] = cartas[aux]
       }
