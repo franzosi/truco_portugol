@@ -56,7 +56,7 @@ programa {
 
         pare
 
-      caso 2:
+      caso 0:
         escreva("Obrigado por jogar nosso jogo!")
         pare
       caso contrario:
